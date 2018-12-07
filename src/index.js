@@ -1,15 +1,35 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+  
+class List extends Component {
 
-const tasks = ['take out the trash', 'shovel the driveway', 'walk the dog'];
-
-// JSX elements
-const element = 
-    <div>
-        <h1> Task List </h1>
+    // NOTE 'this' points to the component that is being rendered, i.e Main's List.
+    // 
+    render() {
+        return ( 
         <ol>
-            { tasks.map((task, index) => <li key= {index}> {task} </li>) } 
+            { this.props.tasks.map((task, index) => <li key= {index}> {task} </li>) } 
         </ol> 
-    </div>
- 
-ReactDOM.render(element, document.getElementById('root'));
+        )
+    }
+} 
+
+class Title extends Component {
+    render() {
+        return (    
+            <h1> {this.props.title} </h1>
+        )
+    }
+}
+
+class Main extends Component {
+    render() {
+        return <div>
+                 <Title title = {'Today\'s Task List'}/>
+                 <List tasks = {['Mow the lawn', 'walk the dog']}/>
+                 <List tasks = {['hose the driveway', 'finish the laundry']}/>
+               </div>
+        
+    }
+}
+ReactDOM.render(<Main />, document.getElementById('root'));
