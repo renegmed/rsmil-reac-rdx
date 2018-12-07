@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
 import Title from './Title';
-import List from './List';
-
+ 
 class Main extends Component {
     render() {
         return <div>
-                 <Title title = {'Today\'s Task List'}/>
-                 <List tasks = {['Mow the lawn', 'walk the dog']}/>
-                 <List tasks = {['hose the driveway', 'finish the laundry']}/>
-               </div>
-        
+                 <Title title = {'Photowall'}/> 
+               </div> 
     }
 }
 
