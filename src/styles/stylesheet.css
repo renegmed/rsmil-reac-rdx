@@ -1,7 +1,12 @@
 html {
     font-size: 10px;
+    font-family: 'sans-serif';
 }
 
+p {
+    font-size: 1.6rem;
+    line-height: 1.5;
+}
 h1 {
     font-family: 'BillabongW00-Regular';
     text-align: center;
@@ -36,4 +41,23 @@ h1 {
     padding: 2rem;
     flex-grow: 1;
     margin: 0 2rem 2rem 2rem;
+}
+
+.photo {
+    width: caclc(100% + 4rem);
+    margin: -2rem 0rem 0rem -2rem; 
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.remove-button {
+    flex-basis: 48%;
+    color: red;
+    font-size: 15px;
+    border: 2p solid #f2f2f2;
+    line-height: 2;
+    padding: 5px;
 }
