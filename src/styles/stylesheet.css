@@ -7,9 +7,9 @@ h1 {
     text-align: center;
     font-size: 13rem;
     font-weight: 100;
-    margin: 20rem 0;
+    margin: 2rem 0;
     letter-spacing: -1px;
-    color: []black;
+    color: black;
 
 }
 
@@ -20,4 +20,20 @@ h1 {
     url("//db.onlinewebfonts.com/t/6d32b8e06f40fb7698cfb714b9e7975d.woff") format("woff"),
     url("//db.onlinewebfonts.com/t/6d32b8e06f40fb7698cfb714b9e7975d.ttf") format("truetype"),
     url("//db.onlinewebfonts.com/t/6d32b8e06f40fb7698cfb714b9e7975d.svg#BillabongW00-Regular") format("svg");
+}
+
+.photoGrid {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;   
+}
+
+.figure {
+    flex-basis: calc(33.333% - 4rem);
+    border: 4px solid #d3d3d3;
+    padding: 2rem;
+    flex-grow: 1;
+    margin: 0 2rem 2rem 2rem;
 }
