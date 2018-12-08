@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Title from './Title';
 import PhotoWall from './PhotoWall';
 import AddPhoto from './AddPhoto';
-
+import { Route } from 'react-router-dom';
 
 class Main extends Component {
 
@@ -14,8 +14,7 @@ class Main extends Component {
             screen: 'photos',      
         } 
         
-        this.removePhoto = this.removePhoto.bind(this);
-        this.navigate = this.navigate.bind(this);
+        this.removePhoto = this.removePhoto.bind(this); 
 
         console.log("constructor");
     }
@@ -26,12 +25,7 @@ class Main extends Component {
             posts: state.posts.filter( post => post !== postRemoved)
         }));
     }
-
-    navigate() {
-        this.setState({
-            screen: 'addPhoto'
-        });
-    }
+ 
     // This is called just after the object is inserted to DOM
     componentDidMount() {
         const data = SimulateFetchFromDatabase();
@@ -53,24 +47,20 @@ class Main extends Component {
     // Called before insert to DOM and then called again after this component inserted to DOM
     render() {
         console.log("render");
-        return <div>
-        {
-            this.state.screen === 'photos' && (    
+        return (
+        
+        <div>
+            <Route exact path = "/" render={ () => (  // multiple-line
                 <div>
                     <Title title = {'Photowall'}/>
                     <PhotoWall posts={this.state.posts} onRemovePhoto={this.removePhoto} onNavigate={this.navigate} /> 
-                </div>
-            )
-        }
+                </div> 
+            )} /> 
 
-        {   
-            this.state.screen === 'addPhoto' && (
-                <div>
-                    <AddPhoto/> 
-                </div>
-            )    
-        }           
-               </div> 
+            <Route path = "/AddPhoto" component = {AddPhoto} />   
+                  
+        </div> 
+        )
     }
 }
 
