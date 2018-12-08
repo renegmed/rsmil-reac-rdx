@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Title from './Title';
 import PhotoWall from './PhotoWall';
- 
+import AddPhoto from './AddPhoto';
+
 
 class Main extends Component {
 
@@ -9,10 +10,13 @@ class Main extends Component {
     constructor() {
         super();
         this.state = {
-            posts: [] 
+            posts: [],
+            screen: 'photos',      
         } 
         
         this.removePhoto = this.removePhoto.bind(this);
+        this.navigate = this.navigate.bind(this);
+
         console.log("constructor");
     }
 
@@ -23,11 +27,16 @@ class Main extends Component {
         }));
     }
 
+    navigate() {
+        this.setState({
+            screen: 'addPhoto'
+        });
+    }
     // This is called just after the object is inserted to DOM
     componentDidMount() {
         const data = SimulateFetchFromDatabase();
         this.setState({
-            posts: data
+            posts: data,            
         });
 
         console.log("componentDidMount");
@@ -45,8 +54,22 @@ class Main extends Component {
     render() {
         console.log("render");
         return <div>
-                 <Title title = {'Photowall'}/>
-                 <PhotoWall posts={this.state.posts} onRemovePhoto={this.removePhoto} /> 
+        {
+            this.state.screen === 'photos' && (    
+                <div>
+                    <Title title = {'Photowall'}/>
+                    <PhotoWall posts={this.state.posts} onRemovePhoto={this.removePhoto} onNavigate={this.navigate} /> 
+                </div>
+            )
+        }
+
+        {   
+            this.state.screen === 'addPhoto' && (
+                <div>
+                    <AddPhoto/> 
+                </div>
+            )    
+        }           
                </div> 
     }
 }
