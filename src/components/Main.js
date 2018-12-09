@@ -10,8 +10,7 @@ class Main extends Component {
     constructor() {
         super();
         this.state = {
-            posts: [],
-            screen: 'photos',      
+            posts: [],       
         } 
         
         this.removePhoto = this.removePhoto.bind(this); 
@@ -26,6 +25,11 @@ class Main extends Component {
         }));
     }
  
+    addPhoto(postSubmitted) {  // e.g. https://apod.nasa.gov/apod/image/1812/GeminidAurora_Hansen1_960.jpg
+        this.setState({
+            posts: this.state.posts.concat([postSubmitted]),
+        });
+    }    
     // This is called just after the object is inserted to DOM
     componentDidMount() {
         const data = SimulateFetchFromDatabase();
@@ -57,7 +61,13 @@ class Main extends Component {
                 </div> 
             )} /> 
 
-            <Route path = "/AddPhoto" component = {AddPhoto} />   
+            <Route path = "/AddPhoto" render = {({history}) => (
+                <AddPhoto onAddPhoto = {(addedPost) => {
+                    //console.log(addedPost);
+                    this.addPhoto(addedPost);
+                    history.push('/');
+                }}/>
+            )} />   
                   
         </div> 
         )
