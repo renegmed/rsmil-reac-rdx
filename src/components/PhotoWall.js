@@ -18,9 +18,7 @@ function PhotoWall(props) {
 } 
 
 PhotoWall.propTypes = {
-    posts: PropTypes.array.isRequired, 
-    onRemovePhoto: PropTypes.func.isRequired, 
-    onNavigate: PropTypes.func.isRequired
+    posts: PropTypes.array.isRequired,    
 }
 
 export default PhotoWall;
