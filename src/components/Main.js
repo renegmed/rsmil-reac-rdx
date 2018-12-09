@@ -6,16 +6,20 @@ import { Route } from 'react-router-dom';
 
 class Main extends Component { 
 
+    componentDidMount() {
+        this.props.removePost(1);
+    }
+
     render() {
         
-        console.log("[Main]", this.props.posts);
+        console.log("[Main]", this.props);
 
         return ( 
         <div>
             <Route exact path = "/" render={ () => (  // multiple-line
                 <div>
                     <Title title = {'Photowall'}/>
-                    <PhotoWall posts={this.props.posts} /> 
+                    <PhotoWall {...this.props} /> 
                 </div> 
             )} /> 
 
