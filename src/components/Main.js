@@ -4,95 +4,32 @@ import PhotoWall from './PhotoWall';
 import AddPhoto from './AddPhoto';
 import { Route } from 'react-router-dom';
 
-class Main extends Component {
+class Main extends Component { 
 
-    // This is called before object is inserted to DOM
-    constructor() {
-        super();
-        this.state = {
-            posts: [],       
-        } 
-        
-        this.removePhoto = this.removePhoto.bind(this); 
-
-        console.log("constructor");
-    }
-
-    removePhoto(postRemoved) {
-        console.log("[removePhoto] ",postRemoved.description);
-        this.setState((state) =>({
-            posts: state.posts.filter( post => post !== postRemoved)
-        }));
-    }
- 
-    addPhoto(postSubmitted) {  // e.g. https://apod.nasa.gov/apod/image/1812/GeminidAurora_Hansen1_960.jpg
-        this.setState({
-            posts: this.state.posts.concat([postSubmitted]),
-        });
-    }    
-    // This is called just after the object is inserted to DOM
-    componentDidMount() {
-        const data = SimulateFetchFromDatabase();
-        this.setState({
-            posts: data,            
-        });
-
-        console.log("componentDidMount");
-    }
-
-    // Called whenever the state changes. Thus this is called after the render() is called for the second time.
-    // This is also called after removePhoto() is called because there is a change of state
-    componentDidUpdate(prevProps, prevState) {
-        console.log("componentDidUpdate");
-        console.log("Prev State", prevState.posts);
-        console.log("Current State", this.state);
-
-    }
-    // Called before insert to DOM and then called again after this component inserted to DOM
     render() {
-        console.log("render");
-        return (
         
+        console.log("[Main]", this.props.posts);
+
+        return ( 
         <div>
             <Route exact path = "/" render={ () => (  // multiple-line
                 <div>
                     <Title title = {'Photowall'}/>
-                    <PhotoWall posts={this.state.posts} onRemovePhoto={this.removePhoto} onNavigate={this.navigate} /> 
+                    {/* <PhotoWall posts={this.state.posts} onRemovePhoto={this.removePhoto} onNavigate={this.navigate} />  */}
                 </div> 
             )} /> 
 
-            <Route path = "/AddPhoto" render = {({history}) => (
+            {/* <Route path = "/AddPhoto" render = {({history}) => (
                 <AddPhoto onAddPhoto = {(addedPost) => {
                     //console.log(addedPost);
                     this.addPhoto(addedPost);
                     history.push('/');
                 }}/>
-            )} />   
+            )} />    */}
                   
         </div> 
         )
     }
-}
-
-function SimulateFetchFromDatabase() {
-    return [{
-        id: 0,
-        description: "beautiful landscape",
-        imageLink: "https://image.jimcdn.com/app/cms/image/transf/none/path/sa6549607c78f5c11/image/i4eeacaa2dbf12d6d/version/1490299332/most-beautiful-landscapes-in-europe-lofoten-european-best-destinations-copyright-iakov-kalinin.jpg" +
-        "3919321_1443393332_n.jpg"
-        }, 
-        {
-        id: 2,
-        description: "Aliens???",
-        imageLink: "https://img.purch.com/rc/640x415/aHR0cDovL3d3dy5zcGFjZS5jb20vaW1hZ2VzL2kvMDAwLzA3Mi84NTEvb3JpZ2luYWwvc3BhY2V4LWlyaWRpdW00LWxhdW5jaC10YXJpcS1tYWxpay5qcGc=" +
-        "08323785_735653395_n.jpg"
-        }, 
-        {
-        id: 3,
-        description: "On a vacation!",
-        imageLink: "https://fm.cnbc.com/applications/cnbc.com/resources/img/editorial/2017/08/24/104670887-VacationExplainsTHUMBWEB.1910x1000.jpg"
-        },
-    ]
 }
 
 export default Main;
