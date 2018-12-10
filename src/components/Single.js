@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Photo from './Photo';
+import Comments from './Comments';
 
 class Single extends Component {
 
@@ -12,7 +13,7 @@ class Single extends Component {
         return  (
             <div className='single-photo'>
                 <Photo post = {post} />
-
+                <Comments/>
             </div>
         )      
     }

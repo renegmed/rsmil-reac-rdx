@@ -52,6 +52,26 @@ h1 a {
     margin: -2rem 0rem 0rem -2rem; 
 }
 
+.comment {
+    width: 100%;
+}
+
+.comment p {
+    border-bottom: 1px solid #d3d3d3;
+    padding: 0.5rem 0;
+}
+
+.comment-form input,
+.comment-form textarea {
+    width: 100%;
+    border: 0;
+    font-size: 1.3rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid #d3d3d3;
+    outline: none;
+    resize: vertical;
+}
+
 .button-container {
     display: flex;
     justify-content: center;
