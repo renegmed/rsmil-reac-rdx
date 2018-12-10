@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Title from './Title';
 import PhotoWall from './PhotoWall';
 import AddPhoto from './AddPhoto';
-import { Route } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 
 class Main extends Component { 
 
@@ -12,9 +12,11 @@ class Main extends Component {
 
         return ( 
         <div>
+            <h1>
+                <Link to="/"> Photowall </Link>
+            </h1>
             <Route exact path = "/" render={ () => (  // multiple-line
-                <div>
-                    <Title title = {'Photowall'}/>
+                <div> 
                     <PhotoWall {...this.props} /> 
                 </div> 
             )} /> 
