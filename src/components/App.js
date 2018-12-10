@@ -5,8 +5,10 @@ import * as actions  from '../redux/actions';
 import { withRouter } from 'react-router';
 
 function mapStateToProps(state) {
+    // state.posts and state.comments must match in reducer.js function names  
     return {
-        posts: state
+        posts: state.posts,
+        comments: state.comments
     }
 }
 
