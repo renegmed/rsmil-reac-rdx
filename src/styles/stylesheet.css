@@ -41,11 +41,10 @@ body {
 }
 
 .photoGrid {
-    max-width: 1000px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;   
+    max-width: 1000px; 
+    margin: 0 auto;  
+    display: flex; 
+    flex-wrap: wrap;
 }
 
 .figure {
@@ -76,9 +75,10 @@ body {
 
 .single-photo .figure {
     box-shadow: none;
-    margin: 0 2rem 0 0 ;
+    margin: 0 2rem 0 0;
     border: 0;
     padding: 0;
+    flex: 1 0 60%;
     max-width: 60%;
 }
 
@@ -87,13 +87,15 @@ body {
     max-width: 40%;
 }
 .single-photo .photo {
-    width: 1005;
+    width: 100%;
     margin: 0;
 }
 
 .photo {
-    width: caclc(100% + 4rem);
-    margin: -2rem 0rem 0rem -2rem; 
+    width: calc(100% + 4rem);
+    margin-left: -2rem;
+    margin-top: -2rem;
+    max-width: none; 
 }
 
 .comment {
