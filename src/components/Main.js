@@ -6,10 +6,6 @@ import { Route } from 'react-router-dom';
 
 class Main extends Component { 
 
-    componentDidMount() {
-        this.props.removePost(1);
-    }
-
     render() {
         
         console.log("[Main]", this.props);
