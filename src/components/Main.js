@@ -6,6 +6,9 @@ import Single from './Single'
 
 class Main extends Component { 
 
+    componentDidMount() {
+        this.props.startLoadingPosts();
+    }
     render() {
         
         //console.log("[Main]", this.props);
