@@ -7,9 +7,9 @@ var config = {
     storageBucket: "photowall-8f82b.appspot.com",
     messagingSenderId: "685209826891"
 };
-
-firebase.initializeApp(config)
+ 
+firebase.initializeApp(config);
 
 const database  = firebase.database();
 
-export default database;
+export { database };
