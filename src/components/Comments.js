@@ -15,7 +15,7 @@ class Comments extends Component {
     }
 
     render() {
-        console.log("[Comments]", this.props.comments);
+        // console.log("[Comments]", this.props.comments);
         return <div className="comment">            
             {               
                 this.props.comments.map((comment, index) => {

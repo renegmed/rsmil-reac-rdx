@@ -44,8 +44,32 @@ export function startAddingComment(comment, postId) {
     }
 }
 
+export function startLoadingComments() {
+    return (dispatch) => {
+        return database.ref('comments').once('value').then( (snapshot) => {
+            let comments = {};
+            snapshot.forEach( (childSnapshot) => { 
+                // console.log("[actions] childSnapshot.key\n", childSnapshot.key);
+                // console.log("[actions] Object.values(childSnapshot.val())\n", Object.values(childSnapshot.val()));
+                comments[childSnapshot.key] = Object.values(childSnapshot.val());
+            });
+            
+            // console.log("[actions] startLoadingComments() comments\n", comments);
+
+            dispatch(loadComments(comments));
+        });
+    }
+}
+
+export function loadComments(comments) {
+    return {
+        type: 'LOAD_COMMENTS',
+        comments,
+    }
+}
+
 export function removePost(index) {
-    console.log("[actions] removePost index ", index);
+    // console.log("[actions] removePost index ", index);
     return {
         type: 'REMOVE_POST',
         index,
