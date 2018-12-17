@@ -15,7 +15,7 @@ function Photo(props){
                         props.startRemovingPost(props.index, post.id);
                         props.history.push('/');
                     }}> Remove </button>
-                    <Link className="button" to = {`single/${post.id}`}> 
+                    <Link className="button" to = {`${post.id}`}> 
                         <div className="comment-count">
                             <div className="speech-bubble"></div>
                             {props.comments[post.id] ? props.comments[post.id].length : 0 }
