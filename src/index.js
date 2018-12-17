@@ -7,7 +7,7 @@ import rootReducer from './redux/reducer';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import App from './components/App'
-import { database } from './database/config';
+require('dotenv').config()
 
 const store = createStore(
     rootReducer, 

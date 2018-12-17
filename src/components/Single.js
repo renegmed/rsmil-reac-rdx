@@ -8,17 +8,19 @@ class Single extends Component {
         //console.log(this.props.match.params.id);
         const {match, posts} = this.props;
         const id = Number(match.params.id);
-        const post = posts.find((post) => post.id === id)
-        const index = this.props.posts.findIndex((post) => post.id === id);
+        const post = posts.find((post) => post.id === id);
         const comments = this.props.comments[id] || [];
-        return  (
-          
-            <div className='single-photo'>
-                <Photo post = {post} {...this.props} index={index}/>  
-                <Comments startAddingComment = {this.props.startAddingComment} comments={comments} id={id} />
-            </div>
-           
-        )      
+        const index = this.props.posts.findIndex((post) => post.id === id);
+        if (this.props.loading === true) {
+            return <div className="loader"> ...loading </div>
+        } else { 
+            return  ( 
+                <div className='single-photo'>
+                    <Photo post = {post} {...this.props} index={index}/>  
+                    <Comments startAddingComment = {this.props.startAddingComment} comments={comments} id={id} />
+                </div>           
+            )      
+        }    
     }
 }
 
